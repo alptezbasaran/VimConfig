@@ -2,7 +2,7 @@
 " Setting up Vundle - the vim plugin bundler
     let iCanHazVundle=1
     let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-    if !filereadable(vundle_readme) 
+    if !filereadable(vundle_readme)
         echo "Installing Vundle.."
         echo ""
         silent !mkdir -p ~/.vim/bundle
@@ -75,7 +75,7 @@ set nowrap " disables word wrap -> continuous lines
 map Q gq
 
 " Map NERDtree
-map <C-n> :NERDTree
+map <C-e> :NERDTree
 
 " In an xterm the mouse should work quite well, thus enable it.
 " set mouse=a
@@ -134,18 +134,6 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 "au BufWinLeave *.py mkview
 "au BufWinEnter *.py silent loadview
 
-function! SetStandard()
-  set expandtab
-  set autoindent
-  set smartindent
-  set smarttab
-  set softtabstop=2
-  set shiftwidth=2
-  set tabstop=2
-endfunction
-command! -bar SetStandard call SetStandard()
-SetStandard
-
 " from amix.dk/vim/vimrc.html
 " search case mods
 set ignorecase
@@ -165,6 +153,19 @@ syntax enable
 " highlight Comment ctermfg=darkgreen
 
 set mouse=nicr
+
+" Arrange tabs
+function! SetStandard()
+  set expandtab
+  set autoindent
+  set smartindent
+  set smarttab
+  set softtabstop=2
+  set shiftwidth=2
+  set tabstop=2
+endfunction
+command! -bar SetStandard call SetStandard()
+au FileType python,py call SetStandard()
 
 " python stuff -> move? to ~/.vim/after/ftplugin
 "let python_highlight_all = 1
