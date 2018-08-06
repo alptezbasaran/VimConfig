@@ -30,6 +30,13 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'sukima/xmledit'
 
+    if iCanHazVundle == 0
+        echo "Installing Vundles, please ignore key map error messages"
+        echo ""
+        :PluginInstall
+    endif
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
