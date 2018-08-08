@@ -1,3 +1,5 @@
 This is my Vim config.
 
 Put this file in ~/.vim/ folder. Vim automatically reads from that directory.
+
+It is recommended to use the newest version of Vim
