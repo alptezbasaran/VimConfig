@@ -29,12 +29,15 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'sukima/xmledit'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-latex/vim-latex'
 
-    if iCanHazVundle == 0
-        echo "Installing Vundles, please ignore key map error messages"
-        echo ""
-        :PluginInstall
-    endif
+if iCanHazVundle == 0
+  echo "Installing Vundles, please ignore key map error messages"
+  echo ""
+  :PluginInstall
+endif
 
 
 " All of your Plugins must be added before the following line
@@ -167,11 +170,11 @@ endfunction
 command! -bar SetStandard call SetStandard()
 au FileType python,py call SetStandard()
 
-" python stuff -> move? to ~/.vim/after/ftplugin
 "let python_highlight_all = 1
 "let g:python_syntax_fold = 1
 au FileType python,py let python_highlight_all = 1
 au FileType python,py let g:python_syntax_fold = 1
+" au Filetype python,py setlocal foldmethod=indent
 
 au FileType python syn keyword pythonDecorator True None False self
 "trailing whitespace removal
@@ -187,10 +190,8 @@ au FileType xml command PrettyXML %!xmllint --format %
 
 au FileType xml let xml_highlight_all=1
 au FileType xml let g:xml_syntax_folding=1
-au Filetype c,cpp,xml,html,python,py setlocal foldmethod=syntax
+au Filetype c,cpp,xml,html setlocal foldmethod=syntax
 au BufReadPost *.xml set syntax=xml
-au Filetype moose_fw setlocal foldmethod=syntax
-" au Filetype python,py setlocal foldmethod=indent
 " au Filetype c,cpp,xml,html,python normal zR
 " au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 
@@ -208,6 +209,4 @@ set laststatus=2
 
 " Case-insensitive search
 set ignorecase
-
-" Highlight search results
 
