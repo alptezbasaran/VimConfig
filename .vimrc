@@ -26,8 +26,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'fisadev/fisa-vim-config'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+"Plugin 'jh17/VimCompletesMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'chrisbra/csv.vim'
 Plugin 'sukima/xmledit'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'tpope/vim-fugitive'
@@ -168,13 +170,13 @@ function! SetStandard()
   set tabstop=2
 endfunction
 command! -bar SetStandard call SetStandard()
-au FileType python,py call SetStandard()
+au FileType python,py,tex call SetStandard()
 
 "let python_highlight_all = 1
 "let g:python_syntax_fold = 1
 au FileType python,py let python_highlight_all = 1
-au FileType python,py let g:python_syntax_fold = 1
-" au Filetype python,py setlocal foldmethod=indent
+" au FileType python,py let g:python_syntax_fold = 1
+au Filetype python,py setlocal foldmethod=indent
 
 au FileType python syn keyword pythonDecorator True None False self
 "trailing whitespace removal
@@ -210,3 +212,28 @@ set laststatus=2
 " Case-insensitive search
 set ignorecase
 
+set encoding=utf-8
+
+" Column Limit
+" higlight column right after max textwidth
+set colorcolumn=+1
+
+" Disable vertical line at max string length in NERDTree
+autocmd FileType * setlocal colorcolumn=+1
+autocmd FileType nerdtree setlocal colorcolumn=""
+
+" 80 Character Line
+set colorcolumn=80
+
+" Highlight characters over 80 column
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" For YouCompleteMe
+let g:ycm_python_interpreter_path = ''
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/home/atezbas/utilities/ycm/global_extra_conf.py'
